@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+ postgres_finances:
+   container_name: postgres_finances_kyros
+   image: postgres:12.2
+   environment:
+     POSTGRES_USER: finance
+     POSTGRES_PASSWORD: finance
+   ports:
+     - "5432:5432"
