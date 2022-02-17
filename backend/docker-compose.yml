@@ -8,3 +8,12 @@ services:
      POSTGRES_PASSWORD: finance
    ports:
      - "5432:5432"
+     
+ postgres_provider:
+   container_name: postgres_providers_kyros
+   image: postgres:12.2
+   environment:
+     POSTGRES_USER: provider
+     POSTGRES_PASSWORD: provider
+   ports:
+     - "5433:5432"

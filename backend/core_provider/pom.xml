@@ -13,8 +13,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>2.7.1.Final</quarkus.platform.version>
-    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <quarkus.platform.version>2.6.1.Final</quarkus.platform.version>
+    <surefire-plugin.version>2.22.1</surefire-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -37,23 +37,7 @@
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-hibernate-orm</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-hibernate-validator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel.quarkus</groupId>
-      <artifactId>camel-quarkus-pgevent</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-jsonb</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel.quarkus</groupId>
-      <artifactId>camel-quarkus-pg-replication-slot</artifactId>
+      <artifactId>quarkus-arc</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -61,15 +45,27 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-jackson</artifactId>
+      <artifactId>quarkus-hibernate-orm-panache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-validator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jsonb</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jdbc-postgresql</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-arc</artifactId>
+      <groupId>io.opentracing.contrib</groupId>
+      <artifactId>opentracing-jdbc</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -80,6 +76,46 @@
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.database-rider</groupId>
+      <artifactId>rider-core</artifactId>
+      <version>1.13.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.database-rider</groupId>
+      <artifactId>rider-cdi</artifactId>
+      <version>1.13.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>stax</groupId>
+      <artifactId>stax</artifactId>
+      <version>1.2.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.approvaltests</groupId>
+      <artifactId>approvaltests</artifactId>
+      <version>4.0.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.6</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-test-common</artifactId>
+      <version>2.6.1.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>1.15.3</version>
     </dependency>
   </dependencies>
   <build>
