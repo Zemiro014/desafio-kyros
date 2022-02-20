@@ -4,17 +4,17 @@ import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
-public class ProviderException extends Exception implements Serializable {
+public class KyrosControllerShimException extends Exception implements Serializable {
     private static final long serialVersionUID = 8375061379371067867L;
 
     private String code;
     private String message;
 
-    public ProviderException() {
+    public KyrosControllerShimException() {
         super();
     }
 
-    public ProviderException(String code, Object... params) {
+    public KyrosControllerShimException(String code, Object... params) {
         setCode(code);
         setMessage(this.getMessageBundleValue(code, params));
     }
