@@ -42,7 +42,7 @@ const Finance = () => {
               <td>{finance.paymentData}</td>
               <td>{finance.dueData}</td>
               <td>
-                <Link to="/form_finance">
+                <Link to={`/form_finance/${finance.id}`}>
                   <BiEdit color="blue" size="1.2em"/>
                 </Link>
 

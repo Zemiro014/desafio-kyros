@@ -15,7 +15,7 @@ const Routas = () => {
         <Route path="/finances" element={<Finance />}/>
         <Route path="/providers" element={ <Provider />}/>
         <Route path="/form_provider" element={<ProviderForm />}/>
-        <Route path="/form_finance" element={<FinanceForm />}/>
+        <Route path="/form_finance/:id" element={<FinanceForm />}/>
       </Routes>
     </Router>
   );
