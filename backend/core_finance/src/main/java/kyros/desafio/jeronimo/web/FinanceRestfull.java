@@ -35,7 +35,8 @@ public class FinanceRestfull {
 
     @POST
     @Transactional
-    public Response createFinance(FinanceRequestTO to){
+    public Response createFinance(FinanceRequestTO to) throws FinanceException{
+        System.out.println("Descrição ===> "+to.getDescription());
         facadeFinance.createFinance(to);
         return Response.status(Response.Status.CREATED).build();
     }

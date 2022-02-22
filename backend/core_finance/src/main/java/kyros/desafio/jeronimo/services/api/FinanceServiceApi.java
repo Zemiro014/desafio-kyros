@@ -7,7 +7,7 @@ import kyros.desafio.jeronimo.exceptions.custom.FinanceException;
 import java.util.List;
 
 public interface FinanceServiceApi {
-    void createFinance(FinanceRequestTO to);
+    void createFinance(FinanceRequestTO to) throws FinanceException;
 
     List<FinanceResponseTO> findAll();
 

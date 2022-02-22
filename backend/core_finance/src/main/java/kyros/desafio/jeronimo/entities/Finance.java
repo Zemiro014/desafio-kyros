@@ -22,6 +22,10 @@ public class Finance {
         return category;
     }
 
+    public void setCategory(FinanceCategory category) {
+        this.category = category;
+    }
+
     public String getId() {
         return id;
     }

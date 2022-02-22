@@ -62,11 +62,13 @@ public class ProviderServiceImpl implements ProviderServiceApi {
     }
     private ProviderResponseTO convertEntityToResponse(Provider entity){
         ProviderResponseTO responseTO = new ProviderResponseTO();
+        responseTO.setId(entity.getId());
         responseTO.setProviderName(entity.getProviderName());
         responseTO.setProviderPhone(entity.getProviderPhone());
         responseTO.setEmail(entity.getEmail());
         responseTO.setCnpjCpf(entity.getCnpjCpf());
         AddressResponseTO address = new AddressResponseTO();
+        address.setId(entity.getProviderAddress().getId());
         address.setCep(entity.getProviderAddress().getCep());
         address.setCity(entity.getProviderAddress().getCity());
         address.setNumber(entity.getProviderAddress().getNumber());

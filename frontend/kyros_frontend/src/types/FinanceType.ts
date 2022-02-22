@@ -1,9 +1,12 @@
+import { CategoryType } from "./CategoryType";
+
 export type FinanceType = {
     id: string;
-    description: String;
+    description: string;
     financeType: string;
     value: string;
     status: string;
     dueData: string;
     paymentData: string;
+    category: CategoryType;
 }

@@ -36,7 +36,6 @@ public class FinanceCategoryRestfull {
     }
 
     @POST
-    @Path("/{category_id}")
     @Transactional
     public Response createCategory(@Valid FinanceCategoryRequestTO to){
         facade.createCategory(to);

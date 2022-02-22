@@ -30,7 +30,7 @@ public class FacadeFinanceImpl implements FacadeFinanceApi {
 
     @Override
     @Transactional
-    public void createFinance(FinanceRequestTO to) {
+    public void createFinance(FinanceRequestTO to) throws FinanceException {
         financeService.createFinance(to);
     }
 

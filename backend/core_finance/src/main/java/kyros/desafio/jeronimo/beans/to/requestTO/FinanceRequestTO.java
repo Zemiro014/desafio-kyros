@@ -9,6 +9,7 @@ public class FinanceRequestTO implements Serializable {
     private String status;
     private String dueData;
     private String paymentData;
+    private FinanceCategoryRequestTO category;
 
     public String getDescription() {
         return description;
@@ -56,5 +57,13 @@ public class FinanceRequestTO implements Serializable {
 
     public void setPaymentData(String paymentData) {
         this.paymentData = paymentData;
+    }
+
+    public FinanceCategoryRequestTO getCategory() {
+        return category;
+    }
+
+    public void setCategory(FinanceCategoryRequestTO category) {
+        this.category = category;
     }
 }

@@ -1,0 +1,88 @@
+.form_finance{
+    box-shadow: 10px 5px 5px rgb(175, 175, 175);
+}
+
+.card-post {
+  background-color: #f6f7f8;
+  padding: 30px 70px;
+  border-radius: 10px;
+}
+
+.card-post h1 {
+  font-family: Heebo;
+  font-weight: 800;
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+}
+
+.line-post {
+  height: 2px;
+  background-color: #b4b5b8;
+}
+
+.card-body-post {
+  margin-top: 25px;
+}
+
+.fields {
+  margin-bottom: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 1rem;
+  font-family: Poppins;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 0;
+  outline: 0;
+  font-size: 1.2rem;
+  padding-left: 15px;
+}
+
+input {
+  height: 45px;
+}
+
+textarea {
+  height: 190px;
+  resize: none;
+  padding-top: 10px;
+}
+
+.btn-post {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.btn-post button {
+  font-family: Heebo;
+  font-weight: 800;
+  font-size: 1.3rem;
+
+  padding: 5px 50px;
+  color: #fff;
+
+  border: 0;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+.btn-post .btn_cancelar {
+  background-color: rgb(167, 79, 79);
+  margin-right: 35px;
+}
+.btn-post .btn_catualizar {
+  background-color: #033524;
+  margin-left: 35px;
+}
+
+.error-message {
+  color: rgb(240, 47, 47);
+}

@@ -37,6 +37,7 @@ public class ProviderRestFull {
     @POST
     @Transactional
     public Response createProvider(@Valid CreateProviderRequestTO to) throws ProviderException {
+        System.out.println("Nome ===> "+to .getProviderName());
         facadeApi.createProvider(to);
         return Response.status(Response.Status.CREATED).build();
     }

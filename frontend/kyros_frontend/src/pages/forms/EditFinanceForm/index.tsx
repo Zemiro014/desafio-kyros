@@ -1,13 +1,14 @@
 import "./styles.css";
 import { useForm } from "react-hook-form";
 import { FinanceType } from "types/FinanceType";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AxiosParams } from "types/vendor/axios";
 import axios from "axios";
 import { BASE_URL } from "util/request";
 
-const FinanceForm = () => {
+const EditFinanceForm = () => {
+  const navigate = useNavigate();
     const { id } = useParams();
     const [finance, setFinance] = useState<FinanceType>();
     useEffect(() => {
@@ -16,10 +17,14 @@ const FinanceForm = () => {
             url: `${BASE_URL}/finances/${id}`,
           };
           axios(params).then((resp) => {
+            console.log(resp.data)
             setFinance(resp.data);
           });
     }, []);
     
+    const atualizarFinanca = () => {
+      alert("Sem implementação por enquanto para esta funcionalidade");
+    }
   const {
     register,
     handleSubmit,
@@ -39,7 +44,7 @@ const FinanceForm = () => {
                 <label>Tipo de finança</label>
                 <select className="form-control" value={finance?.financeType}>
                   <option>...</option>
-                  <option>Despesas</option>
+                  <option>Despesa</option>
                   <option>Receita</option>
                 </select>
                 <p className="error-message">{errors.title?.message}</p>
@@ -75,13 +80,15 @@ const FinanceForm = () => {
 
             <div className="fields">
               <label>Descrição</label>
-              <input type="text" />
+              <input type="text" value={finance?.description}/>
               <p className="error-message">{errors.description?.message}</p>
             </div>
 
             <div className="btn-post">
-              <button className="btn_cancelar" type="submit">Cancelar</button>
-              <button className="btn_catualizar" type="submit">Atualizar</button>
+            <button className="btn_cancelar" onClick={() => navigate("/finances")}>
+                Cancelar
+              </button>
+              <button className="btn_catualizar" onClick={atualizarFinanca}>Atualizar</button>
             </div>
           </form>
         </div>
@@ -89,4 +96,4 @@ const FinanceForm = () => {
     </div>
   );
 };
-export default FinanceForm;
+export default EditFinanceForm;

@@ -11,7 +11,7 @@ import java.util.List;
 public interface FacadeFinanceApi {
     List<FinanceResponseTO> findAllFinances();
 
-    void createFinance(FinanceRequestTO to);
+    void createFinance(FinanceRequestTO to) throws FinanceException;
 
     FinanceResponseTO findFinanceById(String id) throws FinanceException;
 
