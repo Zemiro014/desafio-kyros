@@ -1,9 +1,6 @@
 package kyros.desafio.jeronimo.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "finances_tb")
@@ -17,6 +14,13 @@ public class Finance {
     private String status;
     private String dueData;
     private String paymentData;
+    @OneToOne
+    @JoinColumn(name = "category_id")
+    private FinanceCategory category;
+
+    public FinanceCategory getCategory() {
+        return category;
+    }
 
     public String getId() {
         return id;

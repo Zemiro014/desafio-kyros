@@ -13,7 +13,7 @@ import java.util.List;
 public class FinanceDaoImpl implements FinanceDaoApi {
 
     @Inject
-    EntityManager em;
+    private EntityManager em;
 
     @Override
     public void create(Finance entity) {
@@ -36,7 +36,7 @@ public class FinanceDaoImpl implements FinanceDaoApi {
     }
 
     @Override
-    public void update(String id, FinanceVO vo) {
+    public void update(Finance entity) {
 
     }
 }

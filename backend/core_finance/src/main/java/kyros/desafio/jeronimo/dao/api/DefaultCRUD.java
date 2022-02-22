@@ -2,7 +2,7 @@ package kyros.desafio.jeronimo.dao.api;
 
 import java.util.List;
 
-public interface DefaultCRUD<T, D>{
+public interface DefaultCRUD<T>{
     void create(T entity);
 
     void delete(String id);
@@ -11,5 +11,5 @@ public interface DefaultCRUD<T, D>{
 
     List<T> findAll();
 
-    void update(String id, D vo);
+    void update(T entity);
 }

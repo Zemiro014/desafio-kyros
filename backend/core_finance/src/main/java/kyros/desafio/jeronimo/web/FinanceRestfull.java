@@ -6,6 +6,7 @@ import kyros.desafio.jeronimo.exceptions.custom.FinanceException;
 import kyros.desafio.jeronimo.facade.api.FacadeFinanceApi;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -33,6 +34,7 @@ public class FinanceRestfull {
     }
 
     @POST
+    @Transactional
     public Response createFinance(FinanceRequestTO to){
         facadeFinance.createFinance(to);
         return Response.status(Response.Status.CREATED).build();
