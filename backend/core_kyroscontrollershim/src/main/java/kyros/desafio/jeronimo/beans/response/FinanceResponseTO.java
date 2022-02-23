@@ -9,6 +9,7 @@ public class FinanceResponseTO {
     private String status;
     private String dueData;
     private String paymentData;
+    private FinanceCategoryResponseTO category;
 
     public String getId() {
         return id;
@@ -64,5 +65,13 @@ public class FinanceResponseTO {
 
     public void setPaymentData(String paymentData) {
         this.paymentData = paymentData;
+    }
+
+    public FinanceCategoryResponseTO getCategory() {
+        return category;
+    }
+
+    public void setCategory(FinanceCategoryResponseTO category) {
+        this.category = category;
     }
 }

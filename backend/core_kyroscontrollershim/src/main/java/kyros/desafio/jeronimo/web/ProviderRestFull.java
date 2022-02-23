@@ -1,7 +1,6 @@
 package kyros.desafio.jeronimo.web;
 
 import kyros.desafio.jeronimo.beans.request.ProviderRequestTO;
-import kyros.desafio.jeronimo.beans.response.FinanceResponseTO;
 import kyros.desafio.jeronimo.beans.response.ProviderResponseTO;
 import kyros.desafio.jeronimo.exception.custom.KyrosControllerShimException;
 import kyros.desafio.jeronimo.facade.api.KyrosControllerFacadeApi;
@@ -13,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("provider")
+@Path("providers")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ProviderRestFull {
@@ -31,7 +30,7 @@ public class ProviderRestFull {
     @Path("/{provider_id}")
     public Response findProviderById(@PathParam("provider_id") String id) throws KyrosControllerShimException{
         ProviderResponseTO responseTO = facade.findProviderById(id);
-        return Response.ok().build();
+        return Response.ok().entity(responseTO).build();
     }
 
     @POST

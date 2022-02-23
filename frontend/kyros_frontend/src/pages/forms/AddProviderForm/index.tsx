@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { BASE_URL, BASE_URL_PROVIDER } from "util/request";
+import { BASE_URL, BASE_URL_PROVIDER, BASE_URL_GATEWAY_API } from "util/request";
 import { useNavigate } from "react-router-dom";
 
 const AddProviderForm = () => {

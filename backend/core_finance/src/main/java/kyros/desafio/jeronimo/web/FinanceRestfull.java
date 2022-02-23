@@ -2,6 +2,7 @@ package kyros.desafio.jeronimo.web;
 
 import kyros.desafio.jeronimo.beans.to.requestTO.FinanceRequestTO;
 import kyros.desafio.jeronimo.beans.to.responseTO.FinanceResponseTO;
+import kyros.desafio.jeronimo.beans.to.responseTO.ResponseTO;
 import kyros.desafio.jeronimo.exceptions.custom.FinanceException;
 import kyros.desafio.jeronimo.facade.api.FacadeFinanceApi;
 
@@ -36,7 +37,6 @@ public class FinanceRestfull {
     @POST
     @Transactional
     public Response createFinance(FinanceRequestTO to) throws FinanceException{
-        System.out.println("Descrição ===> "+to.getDescription());
         facadeFinance.createFinance(to);
         return Response.status(Response.Status.CREATED).build();
     }

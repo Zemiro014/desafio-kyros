@@ -6,6 +6,7 @@ import kyros.desafio.jeronimo.communication.ProviderCommunicationService;
 import kyros.desafio.jeronimo.constants.KyrosControllerExceptionConstants;
 import kyros.desafio.jeronimo.exception.custom.KyrosControllerShimException;
 import kyros.desafio.jeronimo.service.api.ProviderServiceApi;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import java.util.List;
 @ApplicationScoped
 public class ProviderServiceImpl implements ProviderServiceApi {
 
+    @RestClient
     @Inject
     private ProviderCommunicationService providerCommunication;
 
@@ -25,6 +27,8 @@ public class ProviderServiceImpl implements ProviderServiceApi {
         Response response = null;
         try{
             response = providerCommunication.findAllProviders();
+            if(response.getStatus() != 200)
+                throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
         } catch (Exception e ){
             System.out.println("Status ===> "+e.getMessage());
             throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
@@ -37,6 +41,8 @@ public class ProviderServiceImpl implements ProviderServiceApi {
         Response response = null;
         try{
             response = providerCommunication.createProvider(to);
+            if(response.getStatus() != 200)
+                throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
         } catch (Exception e ){
             System.out.println("Status ===> "+e.getMessage());
             throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
@@ -45,10 +51,13 @@ public class ProviderServiceImpl implements ProviderServiceApi {
 
     @Override
     public ProviderResponseTO findProviderById(String id) throws KyrosControllerShimException {
-        ProviderResponseTO provider = new ProviderResponseTO();
+        ProviderResponseTO provider = null;
         Response response = null;
         try{
             response = providerCommunication.findProviderById(id);
+            if(response.getStatus() != 200)
+                throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
+            provider = response.readEntity(ProviderResponseTO.class);
         } catch (Exception e ){
             System.out.println("Status ===> "+e.getMessage());
             throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");

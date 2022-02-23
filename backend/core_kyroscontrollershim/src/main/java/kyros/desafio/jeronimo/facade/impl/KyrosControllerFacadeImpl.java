@@ -1,5 +1,6 @@
 package kyros.desafio.jeronimo.facade.impl;
 
+import kyros.desafio.jeronimo.beans.request.FinanceRequestTO;
 import kyros.desafio.jeronimo.beans.request.ProviderRequestTO;
 import kyros.desafio.jeronimo.beans.response.FinanceResponseTO;
 import kyros.desafio.jeronimo.beans.response.ProviderResponseTO;
@@ -32,6 +33,11 @@ public class KyrosControllerFacadeImpl implements KyrosControllerFacadeApi {
     }
 
     @Override
+    public void createFinance(FinanceRequestTO to) throws KyrosControllerShimException {
+        financeService.createFinance(to);
+    }
+
+    @Override
     public List<ProviderResponseTO> findAllProviders() throws KyrosControllerShimException {
         return providerService.findAllProviders();
     }
@@ -45,4 +51,5 @@ public class KyrosControllerFacadeImpl implements KyrosControllerFacadeApi {
     public ProviderResponseTO findProviderById(String id) throws KyrosControllerShimException {
         return providerService.findProviderById(id);
     }
+
 }

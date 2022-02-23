@@ -4,7 +4,7 @@ import { CategoryType } from "types/CategoryType";
 import { useEffect, useState } from "react";
 import { AxiosParams } from "types/vendor/axios";
 import axios from "axios";
-import { BASE_URL } from "util/request";
+import { BASE_URL, BASE_URL_PROVIDER, BASE_URL_GATEWAY_API } from "util/request";
 import { useNavigate } from "react-router-dom";
 
 const AddFinanceForm = () => {

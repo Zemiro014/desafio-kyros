@@ -28,7 +28,9 @@ public class FinanceCategoryServiceImpl implements FinanceCategoryServiceApi {
 
     @Override
     public FinanceCategoryResponseTO categoryById(String id) throws FinanceException {
+        System.out.println(id);
         FinanceCategory entity = dao.findById(id);
+        System.out.println(entity.getCategory());
         if (entity == null )
             throw new FinanceException(FinanceExceptionConstants.ERROR_CODE_FINANCE_CATEGORY_NOT_FOUND, id);
         return convertEntityToResponse(entity);

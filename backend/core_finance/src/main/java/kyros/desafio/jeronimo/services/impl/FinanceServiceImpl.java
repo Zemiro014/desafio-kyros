@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import kyros.desafio.jeronimo.beans.to.requestTO.FinanceRequestTO;
 import kyros.desafio.jeronimo.beans.to.responseTO.FinanceCategoryResponseTO;
 import kyros.desafio.jeronimo.beans.to.responseTO.FinanceResponseTO;
+import kyros.desafio.jeronimo.beans.to.responseTO.ResponseTO;
 import kyros.desafio.jeronimo.constants.FinanceExceptionConstants;
 import kyros.desafio.jeronimo.dao.api.postgres.FinanceDaoApi;
 import kyros.desafio.jeronimo.entities.Finance;
@@ -15,7 +16,6 @@ import kyros.desafio.jeronimo.services.api.FinanceServiceApi;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -30,7 +30,9 @@ public class FinanceServiceImpl implements FinanceServiceApi {
 
     @Override
     public void createFinance(FinanceRequestTO to) throws FinanceException {
+        System.out.println("cheguei aqui");
         FinanceCategoryResponseTO categorie = categoryService.categoryById(to.getCategory().getId());
+        System.out.println("cheguei aqui ==> "+categorie.getCategory());
         if(categorie==null){
             throw new FinanceException(FinanceExceptionConstants.ERROR_CODE_FINANCE_CATEGORY_NOT_FOUND, to.getCategory().getId());
         }
