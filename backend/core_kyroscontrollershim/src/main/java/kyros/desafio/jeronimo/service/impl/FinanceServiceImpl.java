@@ -13,9 +13,14 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
+import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -34,7 +39,10 @@ public class FinanceServiceImpl implements FinanceServiceApi {
         Response response = null;
         try{
             response = financeCommunication.findAllFinances();
-            String responseBody= response.readEntity(Object.class).toString();
+            //response.readEntity(new GenericType<List<FinanceResponseTO>>);
+
+            System.out.println("passou");
+            //String responseBody= response.readEntity(Object.class).toString();
         } catch (Exception e ){
             System.out.println("Status ===> "+e.getMessage());
             throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Finance");
