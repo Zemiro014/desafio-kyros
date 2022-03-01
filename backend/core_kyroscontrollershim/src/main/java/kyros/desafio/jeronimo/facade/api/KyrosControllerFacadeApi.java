@@ -1,7 +1,9 @@
 package kyros.desafio.jeronimo.facade.api;
 
+import kyros.desafio.jeronimo.beans.request.CategoryRequestTO;
 import kyros.desafio.jeronimo.beans.request.FinanceRequestTO;
 import kyros.desafio.jeronimo.beans.request.ProviderRequestTO;
+import kyros.desafio.jeronimo.beans.response.CategoryResponseTO;
 import kyros.desafio.jeronimo.beans.response.FinanceResponseTO;
 import kyros.desafio.jeronimo.beans.response.ProviderResponseTO;
 import kyros.desafio.jeronimo.exception.custom.KyrosControllerShimException;
@@ -20,4 +22,10 @@ public interface KyrosControllerFacadeApi {
     ProviderResponseTO findProviderById(String id) throws KyrosControllerShimException;
 
     void createFinance(FinanceRequestTO to) throws KyrosControllerShimException;
+
+    List<CategoryResponseTO> findAllCategories() throws KyrosControllerShimException;
+
+    CategoryResponseTO findCategoryById(String id) throws KyrosControllerShimException;
+
+    void createCategory(CategoryRequestTO to) throws KyrosControllerShimException;
 }

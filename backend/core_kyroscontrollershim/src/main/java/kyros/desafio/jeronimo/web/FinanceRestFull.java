@@ -23,7 +23,7 @@ public class FinanceRestFull {
     @GET
     public Response findAllFinances() throws KyrosControllerShimException {
         List<FinanceResponseTO> finances = facadeApi.findAllFinances();
-        return Response.ok().build();
+        return Response.ok().entity(finances).build();
     }
     @GET
     @Path("/{finance_id}")

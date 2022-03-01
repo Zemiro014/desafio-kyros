@@ -1,11 +1,14 @@
 package kyros.desafio.jeronimo.facade.impl;
 
+import kyros.desafio.jeronimo.beans.request.CategoryRequestTO;
 import kyros.desafio.jeronimo.beans.request.FinanceRequestTO;
 import kyros.desafio.jeronimo.beans.request.ProviderRequestTO;
+import kyros.desafio.jeronimo.beans.response.CategoryResponseTO;
 import kyros.desafio.jeronimo.beans.response.FinanceResponseTO;
 import kyros.desafio.jeronimo.beans.response.ProviderResponseTO;
 import kyros.desafio.jeronimo.exception.custom.KyrosControllerShimException;
 import kyros.desafio.jeronimo.facade.api.KyrosControllerFacadeApi;
+import kyros.desafio.jeronimo.service.api.CategoryServiceApi;
 import kyros.desafio.jeronimo.service.api.FinanceServiceApi;
 import kyros.desafio.jeronimo.service.api.ProviderServiceApi;
 
@@ -22,6 +25,9 @@ public class KyrosControllerFacadeImpl implements KyrosControllerFacadeApi {
     @Inject
     private ProviderServiceApi providerService;
 
+    @Inject
+    private CategoryServiceApi categoryService;
+
     @Override
     public List<FinanceResponseTO> findAllFinances() throws KyrosControllerShimException {
         return financeService.findAllFinances();
@@ -35,6 +41,21 @@ public class KyrosControllerFacadeImpl implements KyrosControllerFacadeApi {
     @Override
     public void createFinance(FinanceRequestTO to) throws KyrosControllerShimException {
         financeService.createFinance(to);
+    }
+
+    @Override
+    public List<CategoryResponseTO> findAllCategories() throws KyrosControllerShimException {
+        return categoryService.findAllCategories();
+    }
+
+    @Override
+    public CategoryResponseTO findCategoryById(String id) throws KyrosControllerShimException {
+        return categoryService.findCategoryById(id);
+    }
+
+    @Override
+    public void createCategory(CategoryRequestTO to) throws KyrosControllerShimException {
+        categoryService.createCategory(to);
     }
 
     @Override

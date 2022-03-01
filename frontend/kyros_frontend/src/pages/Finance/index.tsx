@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FinanceType } from "types/FinanceType";
 import { AxiosParams } from "types/vendor/axios";
-import { BASE_URL } from "util/request";
+import { BASE_URL_GATEWAY_API } from "util/request";
 import { BiEdit, BiTrash, BiAddToQueue } from "react-icons/bi";
 import "./styles.css";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ const Finance = () => {
   useEffect(() => {
     const params: AxiosParams = {
       method: "GET",
-      url: `${BASE_URL}/finances`,
+      url: `${BASE_URL_GATEWAY_API}/finances`,
     };
     axios(params).then((resp) => {
       setFinances(resp.data as [FinanceType]);

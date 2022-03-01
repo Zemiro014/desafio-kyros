@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AxiosParams } from "types/vendor/axios";
 import axios from "axios";
-import { BASE_URL } from "util/request";
+import { BASE_URL_GATEWAY_API } from "util/request";
 
 const EditFinanceForm = () => {
   const navigate = useNavigate();
@@ -14,10 +14,9 @@ const EditFinanceForm = () => {
     useEffect(() => {
         const params: AxiosParams = {
             method: "GET",
-            url: `${BASE_URL}/finances/${id}`,
+            url: `${BASE_URL_GATEWAY_API}/finances/${id}`,
           };
           axios(params).then((resp) => {
-            console.log(resp.data)
             setFinance(resp.data);
           });
     }, []);

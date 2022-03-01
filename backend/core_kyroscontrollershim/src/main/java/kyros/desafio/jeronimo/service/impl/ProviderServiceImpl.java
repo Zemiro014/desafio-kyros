@@ -23,14 +23,14 @@ public class ProviderServiceImpl implements ProviderServiceApi {
 
     @Override
     public List<ProviderResponseTO> findAllProviders() throws KyrosControllerShimException {
-        List<ProviderResponseTO> providers = new ArrayList<>();
+        List<ProviderResponseTO> providers = null;
         Response response = null;
         try{
             response = providerCommunication.findAllProviders();
+            providers = response.readEntity(List.class);
             if(response.getStatus() != 200)
                 throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
         } catch (Exception e ){
-            System.out.println("Status ===> "+e.getMessage());
             throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
         }
         return providers;
@@ -44,7 +44,6 @@ public class ProviderServiceImpl implements ProviderServiceApi {
             if(response.getStatus() != 200)
                 throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
         } catch (Exception e ){
-            System.out.println("Status ===> "+e.getMessage());
             throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
         }
     }
@@ -59,7 +58,6 @@ public class ProviderServiceImpl implements ProviderServiceApi {
                 throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
             provider = response.readEntity(ProviderResponseTO.class);
         } catch (Exception e ){
-            System.out.println("Status ===> "+e.getMessage());
             throw new KyrosControllerShimException(KyrosControllerExceptionConstants.ERROR_CORE_MICROSERVICE_NOT_FOUND, "Provider");
         }
         return provider;

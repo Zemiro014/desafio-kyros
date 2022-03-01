@@ -4,16 +4,18 @@ import { CategoryType } from "types/CategoryType";
 import { useEffect, useState } from "react";
 import { AxiosParams } from "types/vendor/axios";
 import axios from "axios";
-import { BASE_URL, BASE_URL_PROVIDER, BASE_URL_GATEWAY_API } from "util/request";
+import { BASE_URL_GATEWAY_API } from "util/request";
 import { useNavigate } from "react-router-dom";
 
 const AddFinanceForm = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState<[CategoryType]>();
+  const [inputCategoria, setInputCategoria] = useState('');
+
   useEffect(() => {
     const params: AxiosParams = {
       method: "GET",
-      url: `${BASE_URL}/categories`,
+      url: `${BASE_URL_GATEWAY_API}/categories`,
     };
     axios(params).then((resp) => {
       setCategories(resp.data as [CategoryType]);
@@ -41,7 +43,7 @@ const AddFinanceForm = () => {
     };
     axios({
       method: "post",
-      url: `${BASE_URL}/finances`,
+      url: `${BASE_URL_GATEWAY_API}/finances`,
       headers: {},
       data: requestBody,
     })
@@ -52,6 +54,43 @@ const AddFinanceForm = () => {
       .catch(() => {
         alert("DEU ERRADO");
       });
+  };
+
+  const mostrarModal = (modalId:any) => {
+    const modal = document.getElementById(modalId)
+    if(modal){
+      modal.classList.add("mostrar")
+      modal.addEventListener('click' , (ev) => {
+        const evento = ev.target as HTMLElement
+        if(evento.id == modalId || evento.id == 'btnCancelarModal' || evento.className=='fecharTelefoneModal'){
+          modal.classList.remove('mostrar');          
+        }
+      })
+      
+    }
+  };
+
+  const salvarCategoria = (modalId: any) => {
+
+    if(inputCategoria){
+      const params: AxiosParams = {
+        method: "POST",
+        url: `${BASE_URL_GATEWAY_API}/categories`,
+        data: {
+          category: inputCategoria
+        }
+      };
+      axios(params).then(res => {
+        const modal = document.getElementById(modalId);
+          if(modal){
+              modal.classList.remove('mostrar');            
+          }
+          navigate("/finances")
+      });
+    }
+    else{
+      alert("Deve ser informado o valor da categoria")
+    }
   };
 
   const {
@@ -81,7 +120,6 @@ const AddFinanceForm = () => {
                 </select>
                 <p className="error-message">{errors.title?.message}</p>
               </div>
-
               <div className="col">
                 <label>Tipo de finança</label>
                 <select className="form-control" {...register("financeType")}>
@@ -129,16 +167,47 @@ const AddFinanceForm = () => {
 
             <div className="btn-post">
               <button
+                type="button"
                 className="btn_cancelar"
                 onClick={() => navigate("/finances")}
               >
                 Cancelar
               </button>
-              <button className="btn_catualizar" type="submit">
+              <button className="btn_atualizar" type="submit">
                 Salvar
               </button>
             </div>
           </form>
+          <button type="button" onClick={() => mostrarModal('modal-novo-telefone')}>Add Categoria</button>
+        </div>
+      </div>
+      <div id="modal-novo-telefone" className="modal-container">
+        <div className="modal-telefone">
+            <button className="fecharTelefoneModal">X</button>                       
+          <div className="container-fluid">
+            <div className="col-lg-12 well">                     
+              <div className="row">
+                <div className="col">
+                  <div className="form-group">
+                    <label>Categoria</label>
+                    <input type="text"  className="form-control" placeholder="Digite aqui"
+                    onInput={e => {
+                      const evento = e.target as HTMLInputElement
+                      setInputCategoria(evento.value)
+                    } }/>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <div className="pull-right">
+                    <button type="button" id="btnCancelarModal" className="btn_cancelar">Cancelar</button>
+                    <button type="button" id="btnSalvarNovoTelefone" className = "btn_salvar"  onClick={() => salvarCategoria('btnSalvarNovoTelefone')}>Salvar</button>
+                  </div>
+                </div>
+              </div>                      
+            </div>
+          </div>
         </div>
       </div>
     </div>

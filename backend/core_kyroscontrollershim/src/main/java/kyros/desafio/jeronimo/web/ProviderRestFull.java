@@ -23,7 +23,7 @@ public class ProviderRestFull {
     @GET
     public Response findAllProviders() throws KyrosControllerShimException {
         List<ProviderResponseTO> providers = facade.findAllProviders();
-        return Response.ok().build();
+        return Response.ok().entity(providers).build();
     }
 
     @GET

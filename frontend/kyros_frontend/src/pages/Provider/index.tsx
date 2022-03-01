@@ -4,7 +4,7 @@ import { BiAddToQueue, BiEdit, BiTrash } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { ProviderType } from "types/ProviderType";
 import { AxiosParams } from "types/vendor/axios";
-import { BASE_URL, BASE_URL_PROVIDER } from "util/request";
+import { BASE_URL_GATEWAY_API} from "util/request";
 
 const Provider = () => {
   const [providers, setProviders] = useState<[ProviderType]>();
@@ -12,7 +12,7 @@ const Provider = () => {
   useEffect(() => {
     const params: AxiosParams = {
       method: "GET",
-      url: `${BASE_URL_PROVIDER}/providers`,
+      url: `${BASE_URL_GATEWAY_API}/providers`,
     };
     axios(params).then((resp) => {
       console.log(resp.data);
