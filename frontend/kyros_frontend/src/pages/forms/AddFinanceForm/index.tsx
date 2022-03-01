@@ -182,9 +182,9 @@ const AddFinanceForm = () => {
         </div>
       </div>
       <div id="modal-novo-telefone" className="modal-container">
-        <div className="modal-telefone">
+        <div className="modal-telefone container">
             <button className="fecharTelefoneModal">X</button>                       
-          <div className="container-fluid">
+          <div className="container">
             <div className="col-lg-12 well">                     
               <div className="row">
                 <div className="col">
@@ -200,9 +200,9 @@ const AddFinanceForm = () => {
               </div>
               <div className="row">
                 <div className="col">
-                  <div className="pull-right">
+                  <div className="btns_modal pull-right">
                     <button type="button" id="btnCancelarModal" className="btn_cancelar">Cancelar</button>
-                    <button type="button" id="btnSalvarNovoTelefone" className = "btn_salvar"  onClick={() => salvarCategoria('btnSalvarNovoTelefone')}>Salvar</button>
+                    <button type="button" id="btnSalvarNovaCategoria" className = "btn_salvar"  onClick={() => salvarCategoria('btnSalvarNovaCategoria')}>Salvar</button>
                   </div>
                 </div>
               </div>                      

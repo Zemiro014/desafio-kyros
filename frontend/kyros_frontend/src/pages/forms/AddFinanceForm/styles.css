@@ -74,7 +74,7 @@ textarea {
 
   cursor: pointer;
 }
-.btn-post .btn_cancelar {
+.btn-post .btn_cancelar{
   background-color: rgb(167, 79, 79);
   margin-right: 35px;
 }
@@ -143,4 +143,18 @@ textarea {
   color: black;
   cursor: pointer;
   box-shadow: 0 4px 4 px 0 rgba(0, 0, 0, 0.3);
+}
+
+#btnCancelarModal {
+  background-color: rgb(167, 79, 79);
+  margin-right: 10px;
+  color: white;
+}
+#btnSalvarNovaCategoria{
+  background-color: #033524;
+  margin-left: 10px;
+  color: white;
+}
+.btns_modal{
+  padding-top: 15px;
 }
